@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="UKUU HR - Employee portal for attendance, leave requests, payslips and more">
+
+  <!-- PWA meta tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="UKUU HR">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#7C3AED">
+  <meta name="msapplication-TileColor" content="#7C3AED">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>UKUU HR - Employee Portal</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <style>
+    .app-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #FCFBFF;
+      color: #25163F;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .app-loading.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-shell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .loader-mark {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: grid;
+      place-items: center;
+    }
+    .loader-logo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      filter: grayscale(1) contrast(1.15);
+      animation: logoFloat 2.6s ease-in-out infinite;
+    }
+    .loader-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid #7C3AED;
+      opacity: 0.18;
+    }
+    .loader-ring.outer {
+      inset: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      animation: ringSpin 6s linear infinite;
+    }
+    .loader-ring.inner {
+      inset: 22px;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      animation: ringSpinReverse 3.6s linear infinite;
+    }
+    .loader-caption {
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #4A3C68;
+    }
+    @keyframes logoFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.92;
+      }
+      50% {
+        transform: translateY(-6px) scale(1.03);
+        opacity: 1;
+      }
+    }
+    @keyframes ringSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes ringSpinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .loader-logo,
+      .loader-ring {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script src="flutter.js" defer></script>
+  <script src="flutter_bootstrap.js" async></script>
+</head>
+<body>
+  <!-- PWA install prompt placeholder -->
+  <div id="app-loading" class="app-loading">
+    <div class="loader-shell">
+      <div class="loader-mark">
+        <span class="loader-ring outer"></span>
+        <span class="loader-ring inner"></span>
+        <img class="loader-logo" src="assets/assets/images/Ukuu.png" alt="UKUU HR logo">
+      </div>
+      <div class="loader-caption">Loading</div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var appBooted = false;
+
+      function removeLoader() {
+        var loader = document.getElementById('app-loading');
+        if (!loader) return;
+        loader.classList.add('is-hidden');
+        setTimeout(function() {
+          loader.remove();
+        }, 400);
+      }
+
+      function markBooted() {
+        if (appBooted) return;
+        appBooted = true;
+        removeLoader();
+      }
+
+      window.addEventListener('flutter-first-frame', markBooted);
+
+      setTimeout(function() {
+        if (!appBooted) {
+          console.warn('Flutter did not report first frame. Hiding loader.');
+          markBooted();
+        }
+      }, 12000);
+    })();
+  </script>
+</body>
+</html>
