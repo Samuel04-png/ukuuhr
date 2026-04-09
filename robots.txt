@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Allow: /landing.html
+Allow: /manifest.json
+
+Disallow: /assets/
+Disallow: /icons/
+Disallow: /flutter.js
+Disallow: /flutter_bootstrap.js
+Disallow: /flutter_service_worker.js
+Disallow: /main.dart.js
+Disallow: /*.map$
+Disallow: /*.js.map$
+Disallow: /CanvasKit/
+
+Sitemap: https://ukuu.hr/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

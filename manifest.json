@@ -1,0 +1,71 @@
+{
+    "name": "Ukuu HR — Modern Human Capital Management",
+    "short_name": "Ukuu HR",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#FCFBFF",
+    "theme_color": "#7C3AED",
+    "description": "All-in-one HR platform for African businesses. Automate payroll, track attendance, manage leave, and stay compliant across Zambia, Tanzania, Malawi & Zimbabwe.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "categories": ["business", "productivity", "finance"],
+    "lang": "en",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/assets/images/Ukuu.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Ukuu HR Dashboard"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Payroll",
+            "short_name": "Payroll",
+            "description": "Run payroll and view pay history",
+            "url": "/#/payroll",
+            "icons": [{"src": "icons/Icon-192.png", "sizes": "192x192"}]
+        },
+        {
+            "name": "Attendance",
+            "short_name": "Attendance",
+            "description": "Clock in and view attendance records",
+            "url": "/#/attendance",
+            "icons": [{"src": "icons/Icon-192.png", "sizes": "192x192"}]
+        },
+        {
+            "name": "Leave",
+            "short_name": "Leave",
+            "description": "Submit and manage leave requests",
+            "url": "/#/leave",
+            "icons": [{"src": "icons/Icon-192.png", "sizes": "192x192"}]
+        }
+    ]
+}
